@@ -1,0 +1,51 @@
+# SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+usage: >-
+  First startup can take several minutes while Nextcloud initializes the
+  application files and database.
+application:
+  subdomain: nextcloud
+  background_task: false
+  multi_instance: false
+  routes:
+    - /=http://nextcloud.dev.libr.nextcloud.lzcapp:80
+ext_config:
+  enable_document_access: true
+services:
+  nextcloud:
+    image: nextcloud:33-apache
+    depends_on:
+      - mysql
+    user: root
+    binds:
+      - /lzcapp/var/nextcloud:/var/www/html
+    environment:
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=LAZYCAT
+      - MYSQL_HOST=mysql
+      - NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.${LAZYCAT_BOX_DOMAIN}
+      - OVERWRITEPROTOCOL=https
+      - APACHE_DISABLE_REWRITE_IP=1
+    setup_script: |
+      sh /lzcapp/pkg/content/backup/backup.sh
+  mysql:
+    image: mysql:8.4
+    binds:
+      - /lzcapp/var/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=LAZYCAT
+      - MYSQL_DATABASE=nextcloud
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - -h
+        - localhost
+        - -pLAZYCAT
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s

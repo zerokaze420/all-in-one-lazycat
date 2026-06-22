@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+package: dev.libr.nextcloud
+version: 0.0.3
+name: NextCloud
+description: >-
+  Nextcloud is an open source file sync and sharing platform for private cloud
+  storage, collaboration, and data privacy.
+homepage: https://nextcloud.com/
+author: Nextcloud contributors
+license: AGPL-3.0-or-later
+permissions:
+  required:
+    - net.internet
+    - document.read
+    - document.write
+locales:
+  zh-CN:
+    name: NextCloud
+    description: >-
+      Nextcloud 是一款开源文件同步与共享平台，可用于构建私有云服务，提供文件管理、协作和安全性功能，同时保护数据隐私。
+  en-US:
+    name: NextCloud
+    description: >-
+      Nextcloud is an open source file sync and sharing platform for private cloud
+      storage, collaboration, and data privacy.
