@@ -22,7 +22,7 @@ ext_config:
   enable_document_access: true
 services:
   nextcloud:
-    image: registry.lazycat.cloud/u30266047/library/nextcloud:2261d8034540ab04
+    image: registry.lazycat.cloud/u30266047/library/nextcloud:5e363e4e9b2d2d53
     depends_on:
       - mysql
     user: root
@@ -39,7 +39,7 @@ services:
     setup_script: |
       sh /lzcapp/pkg/content/backup/backup.sh
   mysql:
-    image: registry.lazycat.cloud/u30266047/library/mysql:0e8c3d268f141d91
+    image: registry.lazycat.cloud/u30266047/library/mysql:6761df2170dc166d
     binds:
       - /lzcapp/var/mysql:/var/lib/mysql
     environment:
