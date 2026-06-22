@@ -2,9 +2,14 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 lzc-sdk-version: '0.1'
-usage: >-
-  First startup can take several minutes while Nextcloud initializes the
-  application files and database.
+name: NextCloud
+package: dev.libr.nextcloud
+version: 0.0.7
+description: >-
+  Nextcloud is an open source file sync and sharing platform for private cloud
+  storage, collaboration, and data privacy.
+homepage: https://nextcloud.com/
+author: Nextcloud contributors
 application:
   subdomain: nextcloud
   background_task: false

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 package: dev.libr.nextcloud
-version: 0.0.6
+version: 0.0.7
 name: NextCloud
 description: >-
   Nextcloud is an open source file sync and sharing platform for private cloud
