@@ -10,6 +10,14 @@ application:
   multi_instance: false
   routes:
     - /=http://nextcloud.dev.libr.nextcloud.lzcapp:80
+  injects:
+    - id: open-save-chooser
+      on: browser
+      when:
+        - /*
+      do:
+        - src: file:///lzcapp/pkg/content/lazycat-injects/vendor/lzc-file-pickers.umd.js
+        - src: file:///lzcapp/pkg/content/lazycat-injects/open-save-chooser.js
 ext_config:
   enable_document_access: true
 services:
